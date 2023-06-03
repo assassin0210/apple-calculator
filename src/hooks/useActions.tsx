@@ -25,14 +25,12 @@ export const useActions = () => {
         [
           'c',
           () => {
-            console.log('click')
             dispatch(setState({ value: null, isActiveACC: false }))
           },
         ],
         [
           'ac',
           () => {
-            console.log('click')
             dispatch(
               setState({ value: null, operationSymbol: null, saveValue: null })
             )

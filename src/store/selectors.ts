@@ -6,7 +6,7 @@ const slice = (state: RootStateType) => state.slice
 
 export const isActiveCancelSelector = createSelector(
   slice,
-  ({ value, isActiveACC, saveValue, operationSymbol }) => {
+  ({ isActiveACC }) => {
     return isActiveACC
   }
 )
