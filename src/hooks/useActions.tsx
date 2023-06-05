@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo } from 'react'
+import React, { useCallback, useMemo } from 'react'
 
 import { useAppDispatch } from '@/hooks/hooks'
 import {
@@ -12,32 +12,25 @@ import {
 export const useActions = () => {
   const dispatch = useAppDispatch()
 
-  const onClick = useCallback(
-    (v: TSymbols) => {
-      dispatch(onChangeValue(v))
-    },
-    [dispatch]
-  )
-
   const map = useMemo(
     () =>
       new Map([
         [
           'c',
-          () => {
+          (_: TSymbols) => {
             dispatch(setState({ value: null, isActiveACC: false }))
           },
         ],
         [
           'ac',
-          () => {
+          (_: TSymbols) => {
             dispatch(
               setState({ value: null, operationSymbol: null, saveValue: null })
             )
           },
         ],
-        ['+/-', () => dispatch(onWrap())],
-        ['%', () => null],
+        ['+/-', (_: TSymbols) => dispatch(onWrap())],
+        ['%', (_: TSymbols) => null],
         [
           '/',
           (operationSymbol: TSymbols) =>
@@ -58,31 +51,21 @@ export const useActions = () => {
           (operationSymbol: TSymbols) =>
             dispatch(setOperation(operationSymbol)),
         ],
-        ['=', () => dispatch(setResult())],
-        [',', () => null],
-        ['0', onClick],
-        ['1', onClick],
-        ['2', onClick],
-        ['3', onClick],
-        ['4', onClick],
-        ['5', onClick],
-        ['6', onClick],
-        ['7', onClick],
-        ['8', onClick],
-        ['9', onClick],
+        ['=', (_: TSymbols) => dispatch(setResult())],
+        ['.', (v: TSymbols) => dispatch(onChangeValue(v))],
+        ['0', (v: TSymbols) => dispatch(onChangeValue(v))],
+        ['1', (v: TSymbols) => dispatch(onChangeValue(v))],
+        ['2', (v: TSymbols) => dispatch(onChangeValue(v))],
+        ['3', (v: TSymbols) => dispatch(onChangeValue(v))],
+        ['4', (v: TSymbols) => dispatch(onChangeValue(v))],
+        ['5', (v: TSymbols) => dispatch(onChangeValue(v))],
+        ['6', (v: TSymbols) => dispatch(onChangeValue(v))],
+        ['7', (v: TSymbols) => dispatch(onChangeValue(v))],
+        ['8', (v: TSymbols) => dispatch(onChangeValue(v))],
+        ['9', (v: TSymbols) => dispatch(onChangeValue(v))],
       ]),
-    [dispatch, onClick]
+    [dispatch]
   )
-
-  useEffect(() => {
-    const listner = (e: KeyboardEvent) => {
-      map.has(e.key) && map.get(e.key)?.(e.key as TSymbols)
-    }
-
-    document.body.addEventListener('keydown', (e) => listner(e))
-
-    return document.body.removeEventListener('keydown', (e) => listner(e))
-  }, [map])
 
   return useCallback(
     (
@@ -107,7 +90,7 @@ export type TSymbols =
   | '-'
   | '+'
   | '='
-  | ','
+  | '.'
   | '0'
   | '1'
   | '2'

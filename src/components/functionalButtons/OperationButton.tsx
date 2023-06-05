@@ -4,13 +4,13 @@ import { useActions } from '@/hooks/useActions'
 import { isOperationActive } from '@/store/selectors'
 
 export const OperationButton = ({ operation }: { operation: string }) => {
-  const action = useActions()
+  const onClick = useActions()
   const isActive = useAppSelector((state) =>
     isOperationActive(state, operation)
   )
 
   return (
-    <Button isActive={isActive} onClick={action} buttonType={'orange'}>
+    <Button isActive={isActive} onClick={onClick} buttonType={'orange'}>
       {operation}
     </Button>
   )

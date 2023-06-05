@@ -20,7 +20,7 @@ export const Button = ({
   return (
     <button
       {...rest}
-      className={`w-[88px] transition duration-300  text-[36px] uppercase text-black font-medium h-[88px] rounded-full  ${className} ${buttonTypes[buttonType]}`}
+      className={`w-[88px] outline-0 transition duration-300  text-[36px] uppercase text-black font-medium h-[88px] rounded-full  ${className} ${buttonTypes[buttonType]}`}
     >
       {children}
     </button>

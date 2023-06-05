@@ -4,11 +4,11 @@ import { useActions } from '@/hooks/useActions'
 import { isActiveCancelSelector } from '@/store/selectors'
 
 export const ACCButton = () => {
-  const action = useActions()
+  const onClick = useActions()
 
   const isActive = useAppSelector(isActiveCancelSelector)
   return (
-    <Button onClick={action} buttonType={'gray'}>
+    <Button onClick={onClick} buttonType={'gray'}>
       {isActive ? 'c' : 'ac'}
     </Button>
   )

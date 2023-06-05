@@ -3,13 +3,11 @@ import { Button } from '@/components/Button'
 import { ACCButton } from '@/components/functionalButtons/ACCButton'
 import { OperationButton } from '@/components/functionalButtons/OperationButton'
 import { ResultValue } from '@/components/ResultValue'
-import { useAppSelector } from '@/hooks/hooks'
 import { useActions } from '@/hooks/useActions'
 
 export default function Home() {
-  const action = useActions()
-  const state = useAppSelector((state) => state.slice)
-  console.log(state)
+  const onClick = useActions()
+
   return (
     <main className="container w-[500px]">
       <div
@@ -20,55 +18,55 @@ export default function Home() {
       >
         <ResultValue className={'col-span-4'} />
         <ACCButton />
-        <Button onClick={action} buttonType={'gray'}>
+        <Button onClick={onClick} buttonType={'gray'}>
           +/-
         </Button>
         <OperationButton operation={'%'} />
         <OperationButton operation={'/'} />
-        <Button onKeyDown={(e) => e} onClick={action} buttonType={'darkGray'}>
+        <Button onClick={onClick} buttonType={'darkGray'}>
           7
         </Button>
-        <Button onClick={action} buttonType={'darkGray'}>
+        <Button onClick={onClick} buttonType={'darkGray'}>
           8
         </Button>
-        <Button onClick={action} buttonType={'darkGray'}>
+        <Button onClick={onClick} buttonType={'darkGray'}>
           9
         </Button>
 
         <OperationButton operation={'*'} />
 
-        <Button onClick={action} buttonType={'darkGray'}>
+        <Button onClick={onClick} buttonType={'darkGray'}>
           4
         </Button>
-        <Button onClick={action} buttonType={'darkGray'}>
+        <Button onClick={onClick} buttonType={'darkGray'}>
           5
         </Button>
-        <Button onClick={action} buttonType={'darkGray'}>
+        <Button onClick={onClick} buttonType={'darkGray'}>
           6
         </Button>
         <OperationButton operation={'-'} />
-        <Button onClick={action} buttonType={'darkGray'}>
+        <Button onClick={onClick} buttonType={'darkGray'}>
           1
         </Button>
-        <Button onClick={action} buttonType={'darkGray'}>
+        <Button onClick={onClick} buttonType={'darkGray'}>
           2
         </Button>
-        <Button onClick={action} buttonType={'darkGray'}>
+        <Button onClick={onClick} buttonType={'darkGray'}>
           3
         </Button>
         <OperationButton operation={'+'} />
 
         <Button
-          onClick={action}
+          onClick={onClick}
           buttonType={'darkGray'}
           className={'col-span-2 w-full'}
         >
           0
         </Button>
-        <Button onClick={action} buttonType={'darkGray'}>
-          ,
+        <Button onClick={onClick} buttonType={'darkGray'}>
+          .
         </Button>
-        <Button onClick={action} buttonType={'orange'}>
+        <Button onClick={onClick} buttonType={'orange'}>
           =
         </Button>
       </div>
